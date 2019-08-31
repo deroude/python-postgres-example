@@ -12,6 +12,6 @@ class RestConfig(object):
 class DbConfig(object):
     """DB Config"""
     SQLALCHEMY_DATABASE_URI = os.environ.get(
-        'DATABASE_URL') or 'postgresql+psycopg2://localhost'
+        'DATABASE_URL') or 'postgresql+psycopg2://bob:password@localhost:5432/blog'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_RECORD_QUERIES = True

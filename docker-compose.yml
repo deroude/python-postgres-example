@@ -12,11 +12,11 @@ services:
     ports:
       - 5432:5432
   
-  app:
-    build: .
-    environment:
-      SQLALCHEMY_DATABASE_URI: postgresql+psycopg2://bob:password@db:5432/blog
-    volumes:
-      - ./:/app
-    ports:
-      - 80:80
+  # app:
+  #   build: .
+  #   environment:
+  #     SQLALCHEMY_DATABASE_URI: postgresql+psycopg2://bob:password@db:5432/blog
+  #   volumes:
+  #     - ./:/app
+  #   ports:
+  #     - 80:80

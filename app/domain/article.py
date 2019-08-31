@@ -1,13 +1,26 @@
 """Domain Article class"""
 import datetime
-from api import db
+from app.setup import DB, MA
+# pylint:disable=unused-import
+from app.domain.user import User
 
 
-class User(db.Model):
-    """User Model class"""
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(256), index=True)
-    content = db.Column(db.Text)
-    published_date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
-    author_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    author = db.relationship("User")
+class Article(DB.Model):
+    """Article Model class"""
+    id = DB.Column(DB.BigInteger, primary_key=True,autoincrement=True)
+    title = DB.Column(DB.String(256), index=True)
+    content = DB.Column(DB.Text)
+    published_date = DB.Column(DB.DateTime, default=datetime.datetime.utcnow)
+    author_id = DB.Column(DB.Integer, DB.ForeignKey('user.id'), nullable=False)
+    author = DB.relationship("User")
+
+
+class ArticleSchema(MA.ModelSchema):
+    """Serialization schema"""
+    class Meta:
+        """Model initialization"""
+        model = Article
+
+
+ARTICLE_SCHEMA = ArticleSchema()
+ARTICLE_LIST_SCHEMA = ArticleSchema(many=True)

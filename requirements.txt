@@ -2,5 +2,8 @@ flask
 flask-restful
 flask-migrate
 flask-sqlalchemy
+flask-marshmallow
+marshmallow-sqlalchemy
+marshmallow-enum
 flask-jwt
 psycopg2-binary

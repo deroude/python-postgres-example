@@ -1,7 +1,7 @@
 """Domain User class"""
 import enum
-from api import db
-
+from marshmallow_enum import EnumField
+from app.setup import DB, MA
 
 class UserStatus(enum.Enum):
     """Status Enum"""
@@ -15,11 +15,22 @@ class UserRole(enum.Enum):
     ADMIN = enum.auto()
 
 
-class User(db.Model):
+class User(DB.Model):
     """User Model class"""
-    id = db.Column(db.Integer, primary_key=True)
-    full_name = db.Column(db.String(256), index=True)
-    email = db.Column(db.String(256), index=True)
-    password = db.Column(db.String(128))
-    status = db.Column(db.Enum(UserStatus))
-    role = db.Column(db.Enum(UserRole))
+    id = DB.Column(DB.BigInteger, primary_key=True, autoincrement=True)
+    full_name = DB.Column(DB.String(256), index=True)
+    email = DB.Column(DB.String(256), index=True)
+    password = DB.Column(DB.String(128))
+    status = DB.Column(DB.Enum(UserStatus))
+    role = DB.Column(DB.Enum(UserRole))
+
+class UserSchema(MA.ModelSchema):
+    """Serialization schema"""
+    status = EnumField(UserStatus)
+    role = EnumField(UserRole)
+    class Meta:
+        """Model initialization"""
+        model = User
+
+RECORD_SCHEMA = UserSchema()
+RECORD_LIST_SCHEMA = UserSchema(many=True)
