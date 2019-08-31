@@ -3,3 +3,4 @@ flask-restful
 flask-migrate
 flask-sqlalchemy
 flask-jwt
+psycopg2-binary
