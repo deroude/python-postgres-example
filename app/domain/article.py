@@ -22,5 +22,5 @@ class ArticleSchema(MA.ModelSchema):
         model = Article
 
 
-ARTICLE_SCHEMA = ArticleSchema()
-ARTICLE_LIST_SCHEMA = ArticleSchema(many=True)
+RECORD_SCHEMA = ArticleSchema()
+RECORD_LIST_SCHEMA = ArticleSchema(many=True)
