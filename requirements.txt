@@ -7,3 +7,4 @@ marshmallow-sqlalchemy
 marshmallow-enum
 flask-jwt
 psycopg2-binary
+passlib
